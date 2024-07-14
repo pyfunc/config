@@ -2,19 +2,11 @@
 requires = [
     # Keep this aligned with the project dependencies.
     "setuptools >= 61.0",
-    "incremental",
     "wheel",
     "setuptools-git-versioning"
 ]
-#build-backend = "setuptools.build_meta"
-#backend-path = ["./src"]  # See _build_meta.py
 #build-backend = "_build_meta:build_meta"
 build-backend = "setuptools.build_meta"
-
-[tool.setuptools-git-versioning]
-enabled = true
-
-[tool.incremental]
 
 [project.urls]
 homepage = "https://config.pyfunc.com"
@@ -26,7 +18,6 @@ issue = "https://github.com/pyfunc/config/issues/new"
 
 [project]
 name = "pyfunc-config"
-#version = "0.1.17"
 dynamic = ["version"]
 #dynamic = ["dependencies"]
 description = "libs for cameramonit, ocr, fin-officer, cfo, and other projects"
@@ -179,4 +170,30 @@ skip_covered = false
 
 [tool.black]
 line-length = 120
+
+
+[tool.bumpver]
+current_version = "24.1001-alpha"
+version_pattern = "YY.BUILD[-TAG]"
+commit_message = "bump version {old_version} -> {new_version}"
+tag_message = "{new_version}"
+tag_scope = "default"
+pre_commit_hook = ""
+post_commit_hook = ""
+commit = true
+tag = true
+push = true
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+]
+"setup.py" = [
+    "{version}",
+    "{pep440_version}",
+]
+"README.md" = [
+    "{version}",
+    "{pep440_version}",
+]
 
