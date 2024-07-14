@@ -1,12 +1,15 @@
 [build-system]
-requires = [
-    # Keep this aligned with the project dependencies.
-    "setuptools >= 61.0",
-    "wheel",
-    "setuptools-git-versioning"
-]
+requires = ["setuptools>=42", "wheel", "setuptools-git-versioning"]
 #build-backend = "_build_meta:build_meta"
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+template = "{tag}"
+#unreleased-version = "0.0.0"
+
+[tool.setuptools_scm]
+
 
 [project.urls]
 homepage = "https://config.pyfunc.com"
@@ -36,7 +39,8 @@ dependencies = [
     "pluggy >=1.5.0",
     "pytest >=8.2.2",
     "requests >=2.32.3",
-    "urllib3 >=2.2.2"
+    "urllib3 >=2.2.2",
+    "setuptools-git-versioning"
 ]
 
 authors = [
@@ -170,30 +174,4 @@ skip_covered = false
 
 [tool.black]
 line-length = 120
-
-
-[tool.bumpver]
-current_version = "24.1001-alpha"
-version_pattern = "YY.BUILD[-TAG]"
-commit_message = "bump version {old_version} -> {new_version}"
-tag_message = "{new_version}"
-tag_scope = "default"
-pre_commit_hook = ""
-post_commit_hook = ""
-commit = true
-tag = true
-push = true
-
-[tool.bumpver.file_patterns]
-"pyproject.toml" = [
-    'current_version = "{version}"',
-]
-"setup.py" = [
-    "{version}",
-    "{pep440_version}",
-]
-"README.md" = [
-    "{version}",
-    "{pep440_version}",
-]
 

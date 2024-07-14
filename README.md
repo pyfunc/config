@@ -1,17 +1,42 @@
 # [config.pyfunc.com](http://config.pyfunc.com)
 
 ## START
+
+Install required tools
 ```bash
-python -m pip install pip-tools
-pip-compile pyproject.toml
-pip-sync
+pip install setuptools wheel build twine pip-tools setuptools-git-versioning
+pip install --upgrade setuptools_scm
 ```
+rm -rf build dist *.egg-info
 
 ## UPDATE
 
 ```bash
-git tag 0.1.1
+git tag 1.1.0
+git push origin --tags
 ```
+
+start
+```bash
+pip-compile pyproject.toml
+pip-sync
+```
+
+Use the following commands to build and publish your package:
+
+1. **Build the Package**:
+```bash
+rm -rf build dist *.egg-info
+python -m build --sdist --wheel -n
+python -m build
+```
+
+2. **Publish to PyPI**:
+```bash
+python -m pip install --upgrade twine
+twine upload dist/*
+```
+
 
 
 ```bash
