@@ -22,7 +22,7 @@ pip list
 quick update
 ```bash
 git status
-git tag 1.2.11
+git tag 1.2.12
 git push origin --tags
 git add pyproject.toml
 git add .gitignore
@@ -31,6 +31,7 @@ git add *.md
 git commit -m "new release"
 git push
 python -m setuptools_git_versioning
+rm -rf build dist *.egg-info
 python -m build
 python -m twine upload dist/*
 ```
