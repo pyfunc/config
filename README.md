@@ -28,7 +28,6 @@ echo "__version__ = '${VERSION}'" >> src/pyfunc_config/__init__.py
 quick update
 ```bash
 VERSION=1.2.18
-echo "__version__ = '${VERSION}'" >> src/pyfunc_config/__init__.py
 git status
 git tag $VERSION
 git push origin --tags
