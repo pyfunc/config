@@ -22,7 +22,7 @@ pip list
 quick update
 ```bash
 git status
-git tag 1.2.10
+git tag 1.2.11
 #git push origin --tags
 git add pyproject.toml
 git add .gitignore
