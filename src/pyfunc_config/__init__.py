@@ -23,3 +23,4 @@ try:
 except PackageNotFoundError:
     # package is not installed
     pass
+__version__ = '1.2.18'
