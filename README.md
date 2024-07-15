@@ -21,8 +21,9 @@ pip list
 
 quick update
 ```bash
-VERSION=1.2.13
+VERSION=1.2.14
 echo $VERSION > src/pyfunc_config/VERSION
+echo "__version__ = $VERSION" >> src/pyfunc_config/__init__.py
 git status
 git tag $VERSION
 git push origin --tags
