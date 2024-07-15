@@ -4,11 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools-git-versioning]
 enabled = true
+template = "{tag}"
+dev_template = "{tag}.dev{ccount}"
+dirty_template = "{tag}.dev{ccount}+dirty"
 
-
-[tool.setuptools.package-data]
+#[tool.setuptools.package-data]
 # include VERSION file to a package
-my_module = ["VERSION"]
+#my_module = ["VERSION"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -20,7 +22,7 @@ optional-dependencies.dev = {file = ["requirements-dev.txt"]}
 
 [tool.setuptools_git_versioning]
 enabled = true
-version_scheme = "pre-release"
+
 
 [project.urls]
 homepage = "https://config.pyfunc.com"

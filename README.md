@@ -19,8 +19,22 @@ pip list
 
 ## UPDATE
 
+quick update
 ```bash
-git tag 1.2.5
+git tag 1.2.9
+#git push origin --tags
+git add pyproject.toml
+git add README.md
+git commit -m "new release"
+git push
+python -m setuptools_git_versioning
+python -m build
+```
+
+### DETAILS
+
+```bash
+git tag 1.2.8
 git push origin --tags
 ```
 
@@ -42,7 +56,10 @@ Clean
 ```bash
 rm -rf build dist *.egg-info
 ```
-
+Build the Package
+```bash
+python -m build
+```
 
 Build the Package
 ```bash
