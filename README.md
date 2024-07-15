@@ -23,7 +23,7 @@ quick update
 ```bash
 git status
 git tag 1.2.11
-#git push origin --tags
+git push origin --tags
 git add pyproject.toml
 git add .gitignore
 git add *.py
