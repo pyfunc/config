@@ -16,4 +16,5 @@ from get_ftp_path import get_ftp_path
 # Public API of the package
 __all__ = [get_ftp_path, get_email_path, get_config, ftp_update, ftp_download]
 
-__version__ = 1.2.15
+__version__ = '1.2.15'
+__version__ = '1.2.16'
