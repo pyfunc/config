@@ -21,6 +21,7 @@ pip list
 
 quick update
 ```bash
+git status
 git tag 1.2.10
 #git push origin --tags
 git add pyproject.toml
@@ -31,6 +32,7 @@ git commit -m "new release"
 git push
 python -m setuptools_git_versioning
 python -m build
+python -m twine upload dist/*
 ```
 
 ### DETAILS
@@ -58,15 +60,19 @@ Clean
 ```bash
 rm -rf build dist *.egg-info
 ```
+
+
+Build the Package with debug
+```bash
+python -m build --wheel -n
+```
+
+
 Build the Package
 ```bash
 python -m build
 ```
 
-Build the Package
-```bash
-python -m build --wheel -n
-```
 
 
 
