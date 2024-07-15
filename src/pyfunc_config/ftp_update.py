@@ -1,5 +1,5 @@
-from ftp_download import ftp_download
-from get_ftp_path import get_ftp_path
+from . import ftp_download
+from . import get_ftp_path
 
 def ftp_update(ftps, storage_root, limit=3):
     for ftp in ftps:
