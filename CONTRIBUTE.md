@@ -382,3 +382,58 @@ echo "Package successfully uploaded to PyPI"
 
 By following this setup and ensuring that all dependencies are correctly installed, you should be able to use `setuptools-git-versioning` and avoid errors related to module not found or conflicting configurations.
 
+
+
+
+
+## dirty
+
+
+Gdy widzisz "dirty" w wersji twojego projektu, oznacza to, że w twoim repozytorium Git są niezatwierdzone zmiany (uncommitted changes). Oto kilka powodów, dlaczego to może się zdarzyć i jak to naprawić:
+
+1. Niezatwierdzone zmiany:
+   - Masz zmodyfikowane pliki, które nie zostały jeszcze dodane do staging area lub zatwierdzone.
+   - Rozwiązanie: Zatwierdź wszystkie zmiany lub cofnij je.
+     ```
+     git add .
+     git commit -m "Commit message"
+     ```
+
+2. Nieśledzone pliki:
+   - Masz nowe pliki, które nie są śledzone przez Git.
+   - Rozwiązanie: Dodaj te pliki do repozytorium lub dodaj je do .gitignore.
+     ```
+     git add .
+     git commit -m "Add new files"
+     ```
+   - Lub dodaj do .gitignore, jeśli nie chcesz ich śledzić.
+
+3. Pliki w .gitignore:
+   - Upewnij się, że wszystkie pliki, które nie powinny być śledzone (np. pliki tymczasowe, katalogi build), są w .gitignore.
+
+4. Sprawdź status repozytorium:
+   - Użyj `git status`, aby zobaczyć, które pliki są zmodyfikowane lub nieśledzone.
+
+5. Problemy z końcem linii:
+   - Czasami różnice w końcach linii między systemami mogą powodować oznaczenie jako "dirty".
+   - Rozwiązanie: Skonfiguruj Git do konsekwentnego traktowania końców linii.
+     ```
+     git config --global core.autocrlf input
+     ```
+
+6. Problemy z uprawnieniami plików:
+   - Zmiany w uprawnieniach plików mogą być traktowane jako modyfikacje.
+   - Rozwiązanie: Użyj `git config core.fileMode false`, jeśli nie chcesz śledzić zmian uprawnień.
+
+7. Podmoduły Git:
+   - Jeśli używasz podmodułów, upewnij się, że są one w prawidłowym stanie.
+
+8. Konfiguracja narzędzia wersjonowania:
+   - Sprawdź, czy twoja konfiguracja w `pyproject.toml` lub `setup.py` nie wymusza dodawania "dirty" do wersji.
+
+Aby rozwiązać problem:
+1. Wykonaj `git status`, aby zobaczyć, co jest niezatwierdzone.
+2. Zatwierdź, cofnij lub zignoruj zmiany według potrzeb.
+3. Jeśli wszystko jest czyste, a nadal widzisz "dirty", sprawdź konfigurację narzędzia wersjonowania.
+
+Pamiętaj, że "dirty" w wersji nie jest samo w sobie błędem - to informacja, że twoje lokalne repozytorium ma niezatwierdzone zmiany. Jeśli chcesz mieć "czystą" wersję, upewnij się, że wszystkie zmiany są zatwierdzone przed budowaniem pakietu.

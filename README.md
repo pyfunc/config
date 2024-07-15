@@ -21,10 +21,12 @@ pip list
 
 quick update
 ```bash
-git tag 1.2.9
+git tag 1.2.10
 #git push origin --tags
 git add pyproject.toml
-git add README.md
+git add .gitignore
+git add *.py
+git add *.md
 git commit -m "new release"
 git push
 python -m setuptools_git_versioning

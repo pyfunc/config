@@ -32,6 +32,7 @@ changelog = "https://github.com/pyfunc/config/releases"
 wiki = "https://github.com/pyfunc/config/wiki"
 issue = "https://github.com/pyfunc/config/issues/new"
 
+
 [project]
 name = "pyfunc_config"
 dynamic = ["version", "readme", "dependencies", "optional-dependencies"]
