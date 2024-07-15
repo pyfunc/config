@@ -20,7 +20,7 @@ pip list
 ## UPDATE
 
 ```bash
-git tag 1.2.3
+git tag 1.2.5
 git push origin --tags
 ```
 
@@ -32,9 +32,10 @@ python -m setuptools_git_versioning
 update requirements
 ```bash
 pip-compile pyproject.toml
+```
+```bash
 pip-sync
 ```
-
 ### build and publish your package:
 
 Clean

@@ -20,7 +20,7 @@ optional-dependencies.dev = {file = ["requirements-dev.txt"]}
 
 [tool.setuptools_git_versioning]
 enabled = true
-version_scheme = "post-release"
+version_scheme = "pre-release"
 
 [project.urls]
 homepage = "https://config.pyfunc.com"
