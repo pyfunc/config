@@ -19,13 +19,23 @@ pip list
 
 ## UPDATE
 
-```bash
-VERSION=1.2.15
-#echo $VERSION > src/pyfunc_config/VERSION
-echo "__version__ = '${VERSION}'" >> src/pyfunc_config/__init__.py
-```
 
-quick update
+git workflow update
+```bash
+VERSION=1.2.22
+git status
+git tag $VERSION
+git push origin --tags
+git add pyproject.toml
+git add .gitignore
+git add *.py
+git add *.md
+git add src/*
+git commit -m "new release"
+git push
+```
+`
+manual quick update
 ```bash
 VERSION=1.2.21
 git status
