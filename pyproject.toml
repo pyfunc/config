@@ -20,9 +20,6 @@ readme = {file = ["README.md"], content-type = "text/markdown"}
 dependencies = {file = ["requirements.txt"]}
 optional-dependencies.dev = {file = ["requirements-dev.txt"]}
 
-[tool.setuptools_git_versioning]
-enabled = true
-
 
 [project.urls]
 homepage = "https://config.pyfunc.com"
@@ -135,7 +132,7 @@ exclude = [
 line_length = 99
 multi_line_output = 4
 profile = "black"
-src_paths = ["src/pyfunc-config", "test"]
+src_paths = ["src/pyfunc_config", "test"]
 honor_noqa = true
 
 

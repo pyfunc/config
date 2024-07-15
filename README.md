@@ -22,12 +22,13 @@ pip list
 quick update
 ```bash
 git status
-git tag 1.2.12
+git tag 1.2.13
 git push origin --tags
 git add pyproject.toml
 git add .gitignore
 git add *.py
 git add *.md
+git add src/*
 git commit -m "new release"
 git push
 python -m setuptools_git_versioning
@@ -92,7 +93,7 @@ python -m twine upload dist/*
 Here's an updated GitHub Actions workflow to include the script execution:
 
 ```bash
-py generate_init.py -p src/pyfunc-config
+py generate_init.py -p src/pyfunc_config
 ````
 
 ```bash
