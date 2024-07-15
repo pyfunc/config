@@ -2,52 +2,64 @@
 
 ## START
 
+setup local environment
+```bash
+python3 -m venv pytest-env
+source pytest-env/bin/activate
+```
+
+
 Install required tools
 ```bash
-pip install setuptools wheel build twine pip-tools setuptools-git-versioning
+pip install setuptools wheel setuptools-git-versioning build twine pip-tools toml path
 pip install --upgrade setuptools_scm
+pip install --upgrade twine 
+pip list
 ```
-rm -rf build dist *.egg-info
 
 ## UPDATE
 
 ```bash
-git tag 1.1.0
+git tag 1.2.3
 git push origin --tags
 ```
 
-start
+VERSION
+```bash
+python -m setuptools_git_versioning
+```
+
+update requirements
 ```bash
 pip-compile pyproject.toml
 pip-sync
 ```
 
-Use the following commands to build and publish your package:
+### build and publish your package:
 
-1. **Build the Package**:
+Clean
 ```bash
 rm -rf build dist *.egg-info
-python -m build --sdist --wheel -n
-python -m build
 ```
 
-2. **Publish to PyPI**:
+
+Build the Package
 ```bash
-python -m pip install --upgrade twine
-twine upload dist/*
+python -m build --wheel -n
 ```
 
 
 
+Publish to PyPI
 ```bash
-pip-compile pyproject.toml
-pip-sync
+python -m twine upload dist/*
 ```
 
 
-```bash
-bumpver update --patch
-```
+
+
+
+## Another
 
 
 Here's an updated GitHub Actions workflow to include the script execution:
@@ -64,13 +76,14 @@ py -m build
 twine check dist/*
 ```
 
-
+test before publish
 ```bash
 twine upload -r testpypi dist/*
 ```
 
+publish
 ```bash
-twine upload dist/*
+twine upload dist/* 
 ```        
 
 
@@ -83,3 +96,5 @@ The idea of semantic versioning (or SemVer) is to use 3-part version numbers, ma
     minor when they add functionality in a backwards-compatible manner, and
 
     patch, when they make backwards-compatible bug fixes.
+
+

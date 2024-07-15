@@ -228,3 +228,157 @@ twine upload dist/*
 ```
 
 Following this setup ensures that your package version is accurately managed by your Git tags, following a consistent semantic versioning pattern, and automates the version management during the build process.
+
+
+
+
+
+
+The error `No module named setuptools_git_versioning` suggests that `setuptools-git-versioning` has not been correctly installed or is not being recognized in your current environment.
+
+Let's ensure that `setuptools-git-versioning` is installed correctly and integrated into your build process.
+
+### Step 1: Ensure Installation
+First, verify and install `setuptools-git-versioning`:
+
+```bash
+pip install setuptools-git-versioning
+```
+
+You can also add it directly into your project’s dependencies:
+
+```bash
+pip install setuptools>=42 wheel setuptools-git-versioning
+```
+
+### Step 2: Check Installation
+Verify that `setuptools-git-versioning` is installed by listing your installed packages:
+
+```bash
+pip list
+```
+
+Ensure you see `setuptools-git-versioning` in the list of installed packages.
+
+### Step 3: Update pyproject.toml
+Ensure your `pyproject.toml` is correctly configured. Here is a complete and corrected configuration as per the latest practices:
+
+```toml
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "your-package-name"
+description = "A brief description of your package"
+requires-python = ">=3.6"
+dependencies = [
+    "example-dependency>=1.0.0",
+    # List your dependencies here
+]
+
+[tool.setuptools.package-data]
+your_package_name = ["data/*.dat"]
+
+[tool.setuptools-git-versioning]
+enabled = true
+template = "{tag}"
+unreleased-version = "0.0.0"
+
+[project.urls]
+homepage = "https://your-homepage.com"
+repository = "https://github.com/yourusername/your-repo"
+changelog = "https://github.com/yourusername/your-repo/releases"
+documentation = "https://your-documentation-url.com"
+
+[project.authors]
+authors = [
+    { name = "Your Name", email = "your-email@example.com" },
+]
+
+[project.maintainers]
+maintainers = [
+    { name = "Your Maintainer Name", email = "maintainer-email@example.com" }
+]
+
+[project.classifiers]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+```
+
+### Step 4: Integrate with Git
+Ensure that your Git tags follow a semantic versioning format:
+
+```bash
+git tag 1.0.0
+git tag 1.1.0
+git push origin --tags
+```
+
+### Step 5: Build and Upload
+
+1. **Build the Package**:
+   Ensure you are in the root directory of your project and then run:
+
+   ```bash
+   python -m build
+   ```
+
+2. **Upload to PyPI**:
+   If you have not installed Twine, install it using:
+
+   ```bash
+   pip install twine
+   ```
+
+   Then upload your package:
+
+   ```bash
+   twine upload dist/*
+   ```
+
+### Example Workflow
+
+For a complete and automated workflow, consider the following bash script to build and publish your package:
+
+```bash
+#!/bin/bash
+
+# Ensure you are in the project’s root directory
+cd /path/to/your/project
+
+# Optional: Clean previous builds
+rm -rf build dist *.egg-info
+
+# Install required tools
+pip install --upgrade setuptools wheel setuptools-git-versioning build twine
+
+# Ensure setuptools-git-versioning is installed and recognized
+python -m pip show setuptools-git-versioning
+
+# Build the package
+python -m build
+
+# Upload the package to PyPI
+twine upload dist/*
+
+# Successful upload message
+echo "Package successfully uploaded to PyPI"
+```
+
+### Troubleshooting Tips
+- Make sure no conflicting Python versions or environments are being used.
+- Verify that your `pyproject.toml` file is in the correct format and includes all necessary configurations.
+- Ensure that Git tags follow a proper semantic versioning pattern and are pushed to the remote repository.
+
+By following this setup and ensuring that all dependencies are correctly installed, you should be able to use `setuptools-git-versioning` and avoid errors related to module not found or conflicting configurations.
+

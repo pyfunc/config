@@ -79,7 +79,8 @@ def get_project_version_by_toml(path="pyproject.toml") -> str:
 def template_initpy(imports: List[Tuple[str, str]]):
 
     version = 'from ._version import __version__'
-    template = bypyproject(version)
+    template = version
+    #template = bypyproject(version)
     for fname, elname in imports:
         template += f'from .{fname} import {elname}\n'
 

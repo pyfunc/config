@@ -1,15 +1,26 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "setuptools-git-versioning"]
-#build-backend = "_build_meta:build_meta"
+requires = ["setuptools>=45", "setuptools-git-versioning"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools-git-versioning]
 enabled = true
-template = "{tag}"
-#unreleased-version = "0.0.0"
 
-[tool.setuptools_scm]
 
+[tool.setuptools.package-data]
+# include VERSION file to a package
+my_module = ["VERSION"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+dependencies = {file = ["requirements.txt"]}
+optional-dependencies.dev = {file = ["requirements-dev.txt"]}
+
+[tool.setuptools_git_versioning]
+enabled = true
+version_scheme = "post-release"
 
 [project.urls]
 homepage = "https://config.pyfunc.com"
@@ -20,28 +31,13 @@ wiki = "https://github.com/pyfunc/config/wiki"
 issue = "https://github.com/pyfunc/config/issues/new"
 
 [project]
-name = "pyfunc-config"
-dynamic = ["version"]
-#dynamic = ["dependencies"]
+name = "pyfunc_config"
+dynamic = ["version", "readme", "dependencies", "optional-dependencies"]
 description = "libs for cameramonit, ocr, fin-officer, cfo, and other projects"
-readme.content-type = "text/markdown"
-readme.file = "README.md"
 keywords = ["test", "framework", "cameramonit", "fin-officer", "console", "terminal", "time"]
 license = { file = "LICENSE" }
 requires-python = ">=3.7"
-dependencies = [
-    "stringcase ~=1.2.0",
-    "certifi >=2024.7.4",
-    "charset-normalizer >=3.3.2",
-    "idna >=3.7",
-    "iniconfig >=2.0.0",
-    "packaging >=24.1",
-    "pluggy >=1.5.0",
-    "pytest >=8.2.2",
-    "requests >=2.32.3",
-    "urllib3 >=2.2.2",
-    "setuptools-git-versioning"
-]
+
 
 authors = [
     { name = "Tom Sapletta", email = "tom@sapletta.com" },
@@ -132,18 +128,6 @@ exclude = [
     ".ipynb_checkpoints"
 ]
 
-[tool.yapf]
-spaces_before_comment = [15, 20]
-arithmetic_precedence_indication = true
-allow_split_before_dict_value = false
-coalesce_brackets = true
-column_limit = 99
-each_dict_entry_on_separate_line = false
-space_between_ending_comma_and_closing_bracket = false
-split_before_named_assigns = false
-split_before_closing_bracket = false
-blank_line_before_nested_class_or_def = false
-
 [tool.isort]
 line_length = 99
 multi_line_output = 4
@@ -151,11 +135,6 @@ profile = "black"
 src_paths = ["src/pyfunc-config", "test"]
 honor_noqa = true
 
-[tool.pytest.ini_options]
-addopts = "--doctest-modules"
-doctest_optionflags = "NORMALIZE_WHITESPACE ELLIPSIS"
-minversion = "6.2"
-testpaths = ["tests"]
 
 [tool.coverage.run]
 #branch = true
@@ -164,14 +143,6 @@ testpaths = ["tests"]
 #disable_warnings = ["include-ignored"]
 source = ["src"]
 
-[tool.coverage.report]
-show_missing = true
-
-[tool.coverage.html]
-show_contexts = true
-skip_covered = false
-
 
 [tool.black]
 line-length = 120
-
