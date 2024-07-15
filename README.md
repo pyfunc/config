@@ -21,8 +21,10 @@ pip list
 
 quick update
 ```bash
+VERSION=1.2.13
+echo $VERSION > src/pyfunc_config/VERSION
 git status
-git tag 1.2.13
+git tag $VERSION
 git push origin --tags
 git add pyproject.toml
 git add .gitignore
